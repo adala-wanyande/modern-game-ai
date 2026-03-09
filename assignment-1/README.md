@@ -3,7 +3,7 @@
 
 This repository contains a procedural content generation (PCG) script for Minecraft, developed for the **Modern Game AI Algorithms (MGAIA)** course at Leiden University. 
 
-Using the[GDPC (Generative Design Python Client)](https://github.com/avdstaaij/gdpc) framework, the script evaluates in-game terrain and procedurally constructs a highly detailed, Tudor-style grand manor complete with a landscaped garden, retaining walls, and custom flora.
+Using the [GDPC (Generative Design Python Client)](https://github.com/avdstaaij/gdpc) framework, the script evaluates in-game terrain and procedurally constructs a highly detailed, Tudor-style grand manor complete with a landscaped garden, retaining walls, and custom flora.
 
 ## Key Features (The "Mini-Report")
 
