@@ -31,11 +31,14 @@ from game_simulator import GameState, Snake, DIRECTIONS
 # ── Agent interfaces ──────────────────────────────────────────────────────────
 
 def _state_to_api(state: GameState, snake_id: str) -> dict:
+    """Convert GameState to Battlesnake API dict from snake_id's perspective."""
     def to_api(s):
+        head = {"x": s.body[0][0], "y": s.body[0][1]}
         return {
             "id": s.id,
             "health": s.health,
             "length": s.length,
+            "head": head,
             "body": [{"x": x, "y": y} for x, y in s.body],
         }
     snake = next(s for s in state.snakes if s.id == snake_id)
@@ -82,11 +85,66 @@ def _mcts_rave_agent(state: GameState, snake_id: str, think: float = 0.2) -> str
     return ra.mcts_rave(state, think_time=think)
 
 
+# ── Eirini's agent wrappers ───────────────────────────────────────────────────
+
+def _eirini_heuristic(state: GameState, snake_id: str) -> str:
+    sys.path.insert(0, "eirini")
+    from main_heuristic import heuristic_agent
+    api = _state_to_api(state, snake_id)
+    return heuristic_agent(api, competitive=False, mcts_use=True)["move"]
+
+
+def _eirini_heuristic_comp(state: GameState, snake_id: str) -> str:
+    sys.path.insert(0, "eirini")
+    from main_heuristic import heuristic_agent
+    api = _state_to_api(state, snake_id)
+    return heuristic_agent(api, competitive=True, mcts_use=True)["move"]
+
+
+def _eirini_mcts(state: GameState, snake_id: str) -> str:
+    import time as _t
+    sys.path.insert(0, "eirini")
+    from main_MCTS import mcts_agent
+    api = _state_to_api(state, snake_id)
+    # Scale time so her 0.8s budget maps to THINK_TIME real seconds
+    _real = _t.time
+    _t0 = _real()
+    scale = 0.8 / THINK_TIME
+    _t.time = lambda: _t0 + (_real() - _t0) * scale
+    try:
+        result = mcts_agent(api, heuristic=False, competitive=False)["move"]
+    finally:
+        _t.time = _real
+    return result
+
+
+def _eirini_mcts_heuristic(state: GameState, snake_id: str) -> str:
+    import time as _t
+    sys.path.insert(0, "eirini")
+    from main_MCTS import mcts_agent
+    api = _state_to_api(state, snake_id)
+    _real = _t.time
+    _t0 = _real()
+    scale = 0.8 / THINK_TIME
+    _t.time = lambda: _t0 + (_real() - _t0) * scale
+    try:
+        result = mcts_agent(api, heuristic=True, competitive=False)["move"]
+    finally:
+        _t.time = _real
+    return result
+
+
 AGENTS = {
-    "random":    _random_agent,
-    "heuristic": _heuristic_agent,
-    "mcts":      _mcts_agent,
-    "mcts_rave": _mcts_rave_agent,
+    # Adala's agents
+    "random":             _random_agent,
+    "heuristic":          _heuristic_agent,
+    "mcts":               _mcts_agent,
+    "mcts_rave":          _mcts_rave_agent,
+    # Eirini's agents
+    "e_heuristic":        _eirini_heuristic,
+    "e_heuristic_comp":   _eirini_heuristic_comp,
+    "e_mcts":             _eirini_mcts,
+    "e_mcts_heuristic":   _eirini_mcts_heuristic,
 }
 
 
@@ -167,8 +225,8 @@ def tournament(agent_names: list[str], n_games: int, seed: int):
     print("─" * 60)
 
     for game_idx in range(n_games):
-        # Rotate agent assignment across snake slots each game
-        assigned = [agent_names[i % len(agent_names)] for i in range(4)]
+        # Rotate starting offset each game so all agents get equal play time
+        assigned = [agent_names[(i + game_idx) % len(agent_names)] for i in range(4)]
         random.shuffle(assigned)
         agent_map = {f"snake_{i}": assigned[i] for i in range(4)}
         slot_to_agent = {f"snake_{i}": assigned[i] for i in range(4)}
