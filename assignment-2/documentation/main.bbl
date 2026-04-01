@@ -1,0 +1,43 @@
+\begin{thebibliography}{}
+
+\bibitem[Albrecht and Stone, 2018]{albrecht2018autonomous}
+Albrecht, S.~V. and Stone, P. (2018).
+\newblock Autonomous agents modelling other agents: A comprehensive survey and open problems.
+\newblock {\em Artificial Intelligence}, 258:66--95.
+
+\bibitem[Cazenave, 2015]{cazenave2015generalized}
+Cazenave, T. (2015).
+\newblock Generalized rapid action value estimation.
+\newblock In {\em Proceedings of the 24th International Joint Conference on Artificial Intelligence}, pages 754--760.
+
+\bibitem[Coulom, 2007]{coulom2007computing}
+Coulom, R. (2007).
+\newblock Computing ``{E}lo ratings'' of move patterns in the game of {Go}.
+\newblock In {\em Computer Games Workshop}.
+
+\bibitem[Gelly and Silver, 2007]{gelly2007combining}
+Gelly, S. and Silver, D. (2007).
+\newblock Combining online and offline knowledge in {UCT}.
+\newblock In {\em Proceedings of the 24th International Conference on Machine Learning}, pages 273--280.
+
+\bibitem[Herbrich et~al., 2006]{herbrich2006trueskill}
+Herbrich, R., Minka, T., and Graepel, T. (2006).
+\newblock {TrueSkill}: A bayesian skill rating system.
+\newblock In {\em Advances in Neural Information Processing Systems}, volume~19.
+
+\bibitem[Jaderberg et~al., 2017]{jaderberg2017population}
+Jaderberg, M., Dalibard, V., Osindero, S., Czarnecki, W.~M., Donahue, J., Razavi, A., Vinyals, O., Green, T., Dunning, I., Simonyan, K., et~al. (2017).
+\newblock Population based training of neural networks.
+\newblock {\em arXiv preprint arXiv:1711.09846}.
+
+\bibitem[Silver et~al., 2017]{silver2017mastering}
+Silver, D., Hubert, T., Schrittwieser, J., Antonoglou, I., Lai, M., Guez, A., Lanctot, M., Sifre, L., Kumaran, D., Graepel, T., et~al. (2017).
+\newblock Mastering chess and shogi by self-play with a general reinforcement learning algorithm.
+\newblock {\em arXiv preprint arXiv:1712.01815}.
+
+\bibitem[Sturtevant and Bowling, 2006]{sturtevant2006effective}
+Sturtevant, N.~R. and Bowling, M. (2006).
+\newblock Effective move pruning in multi-player games.
+\newblock In {\em Proceedings of the AAAI Workshop on Learning for Search}.
+
+\end{thebibliography}

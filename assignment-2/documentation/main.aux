@@ -1,0 +1,63 @@
+\relax 
+\providecommand\hyper@newdestlabel[2]{}
+\providecommand\HyField@AuxAddToFields[1]{}
+\providecommand\HyField@AuxAddToCoFields[2]{}
+\@writefile{toc}{\contentsline {section}{\numberline {1}Introduction}{2}{section.1}\protected@file@percent }
+\newlabel{sec:intro}{{1}{2}{Introduction}{section.1}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {2}Methods}{2}{section.2}\protected@file@percent }
+\newlabel{sec:methods}{{2}{2}{Methods}{section.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.1}Game Rules}{2}{subsection.2.1}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.2}Heuristic Agent}{2}{subsection.2.2}\protected@file@percent }
+\newlabel{sec:heur-agent}{{2.2}{2}{Heuristic Agent}{subsection.2.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {2.3}MCTS Agent}{3}{subsection.2.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsubsection}{\numberline {2.3.1}Hyper-parameter exploration}{4}{subsubsection.2.3.1}\protected@file@percent }
+\newlabel{sec:hyperparameter-exploration}{{2.3.1}{4}{Hyper-parameter exploration}{subsubsection.2.3.1}{}}
+\citation{gelly2007combining}
+\@writefile{toc}{\contentsline {section}{\numberline {3}Further improvements}{5}{section.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.1}Progressive Bias for heuristic action reduction}{5}{subsection.3.1}\protected@file@percent }
+\providecommand*\caption@xref[2]{\@setref\relax\@undefined{#1}}
+\newlabel{fig:Cp}{{1a}{6}{Effect of the exploration constant $C_p$ within the range 0 to 10. The rollout depth was fixed to 80}{figure.caption.2}{}}
+\newlabel{sub@fig:Cp}{{a}{6}{Effect of the exploration constant $C_p$ within the range 0 to 10. The rollout depth was fixed to 80}{figure.caption.2}{}}
+\newlabel{fig:sub2}{{1b}{6}{Same as in \ref {fig:Cp} but now we explored a rollout depth ranging from 20 to 1000 steps at a fixed $C_p$ value (2.71)}{figure.caption.2}{}}
+\newlabel{sub@fig:sub2}{{b}{6}{Same as in \ref {fig:Cp} but now we explored a rollout depth ranging from 20 to 1000 steps at a fixed $C_p$ value (2.71)}{figure.caption.2}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {1}{\ignorespaces Hyper-parameter exploration of the exploration constant and rollout depth in the MCTS agents. In total 1000 games were run consisting of one MCTS agent against 3 heuristics. In order to isolate the effect of the hyper-parameter we fixed the other parameter at a value. In the plots we present the average turns, win rates as well as TrueSkill ratings per hyper-parameter increment. In addition, we assign a heuristic baseline in the TrueSkill Rating as a reference point to our results. }}{6}{figure.caption.2}\protected@file@percent }
+\newlabel{fig:hyperparameter exploration}{{1}{6}{Hyper-parameter exploration of the exploration constant and rollout depth in the MCTS agents. In total 1000 games were run consisting of one MCTS agent against 3 heuristics. In order to isolate the effect of the hyper-parameter we fixed the other parameter at a value. In the plots we present the average turns, win rates as well as TrueSkill ratings per hyper-parameter increment. In addition, we assign a heuristic baseline in the TrueSkill Rating as a reference point to our results}{figure.caption.2}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {3.2}Rapid Value Action Estimation in the selection}{6}{subsection.3.2}\protected@file@percent }
+\@writefile{lof}{\contentsline {figure}{\numberline {2}{\ignorespaces Hyper-parameter exploration of the $P_b$ weight in the progressive bias implementation. In total 1000 games were run consisting of one MCTS agent with the improvement against 3 using the standard UCB1 formula for selection. In the plots we present the average turn, win rates as well as TrueSkill ratings per $P_b$ value. In addition, we assign a MCTS baseline in the TrueSkill Rating as a reference point to our results. }}{7}{figure.caption.3}\protected@file@percent }
+\newlabel{fig:progressive-bias}{{2}{7}{Hyper-parameter exploration of the $P_b$ weight in the progressive bias implementation. In total 1000 games were run consisting of one MCTS agent with the improvement against 3 using the standard UCB1 formula for selection. In the plots we present the average turn, win rates as well as TrueSkill ratings per $P_b$ value. In addition, we assign a MCTS baseline in the TrueSkill Rating as a reference point to our results}{figure.caption.3}{}}
+\citation{herbrich2006trueskill}
+\@writefile{toc}{\contentsline {section}{\numberline {4}Results}{9}{section.4}\protected@file@percent }
+\newlabel{sec:results}{{4}{9}{Results}{section.4}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {4.1}RAVE and Paranoid Search Comparison}{9}{subsection.4.1}\protected@file@percent }
+\@writefile{lot}{\contentsline {table}{\numberline {1}{\ignorespaces Tournament leaderboard — 16 games comparing RAVE and paranoid search against baselines}}{9}{table.caption.4}\protected@file@percent }
+\newlabel{tab:rave-results}{{1}{9}{Tournament leaderboard — 16 games comparing RAVE and paranoid search against baselines}{table.caption.4}{}}
+\@writefile{toc}{\contentsline {section}{\numberline {5}Discussion}{9}{section.5}\protected@file@percent }
+\newlabel{sec:discussion}{{5}{9}{Discussion}{section.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.1}RAVE Improves Over Vanilla MCTS}{9}{subsection.5.1}\protected@file@percent }
+\citation{sturtevant2006effective}
+\newlabel{fig:tourn1}{{3a}{10}{Tournament of two heuristic agents (friendly and competitive modes) against two MCTS (random and heuristic rollout)}{figure.caption.5}{}}
+\newlabel{sub@fig:tourn1}{{a}{10}{Tournament of two heuristic agents (friendly and competitive modes) against two MCTS (random and heuristic rollout)}{figure.caption.5}{}}
+\@writefile{lof}{\contentsline {figure}{\numberline {3}{\ignorespaces Comparison of the agent's performances. In total, 1000 games were performed and in the plots we present the TrueSkill ratings, win rates as well as the survival turn distribution per agent. }}{10}{figure.caption.5}\protected@file@percent }
+\newlabel{fig:tournaments}{{3}{10}{Comparison of the agent's performances. In total, 1000 games were performed and in the plots we present the TrueSkill ratings, win rates as well as the survival turn distribution per agent}{figure.caption.5}{}}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.2}Paranoid Search Underperformed Expectations}{10}{subsection.5.2}\protected@file@percent }
+\citation{cazenave2015generalized}
+\citation{silver2017mastering}
+\citation{albrecht2018autonomous}
+\citation{coulom2007computing}
+\citation{jaderberg2017population}
+\@writefile{toc}{\contentsline {subsection}{\numberline {5.3}Consistent Two-Tier Structure}{11}{subsection.5.3}\protected@file@percent }
+\@writefile{toc}{\contentsline {section}{\numberline {6}Future Work}{11}{section.6}\protected@file@percent }
+\newlabel{sec:future work}{{6}{11}{Future Work}{section.6}{}}
+\bibstyle{apalike}
+\bibdata{bib}
+\bibcite{albrecht2018autonomous}{{1}{2018}{{Albrecht and Stone}}{{}}}
+\bibcite{cazenave2015generalized}{{2}{2015}{{Cazenave}}{{}}}
+\bibcite{coulom2007computing}{{3}{2007}{{Coulom}}{{}}}
+\bibcite{gelly2007combining}{{4}{2007}{{Gelly and Silver}}{{}}}
+\bibcite{herbrich2006trueskill}{{5}{2006}{{Herbrich et~al.}}{{}}}
+\bibcite{jaderberg2017population}{{6}{2017}{{Jaderberg et~al.}}{{}}}
+\bibcite{silver2017mastering}{{7}{2017}{{Silver et~al.}}{{}}}
+\bibcite{sturtevant2006effective}{{8}{2006}{{Sturtevant and Bowling}}{{}}}
+\@writefile{toc}{\contentsline {section}{\numberline {7}Conclusions}{12}{section.7}\protected@file@percent }
+\newlabel{sec:conclusion}{{7}{12}{Conclusions}{section.7}{}}
+\gdef \@abspage@last{12}

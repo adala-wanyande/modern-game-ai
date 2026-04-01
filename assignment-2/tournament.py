@@ -85,6 +85,13 @@ def _mcts_rave_agent(state: GameState, snake_id: str, think: float = 0.2) -> str
     return ra.mcts_rave(state, think_time=think)
 
 
+def _paranoid_agent(state: GameState, snake_id: str, think: float = 0.2) -> str:
+    import paranoid_agent as pa
+    state = deepcopy(state)
+    state.my_id = snake_id
+    return pa.paranoid(state, think_time=think)
+
+
 # ── Eirini's agent wrappers ───────────────────────────────────────────────────
 
 def _eirini_heuristic(state: GameState, snake_id: str) -> str:
@@ -140,6 +147,7 @@ AGENTS = {
     "heuristic":          _heuristic_agent,
     "mcts":               _mcts_agent,
     "mcts_rave":          _mcts_rave_agent,
+    "paranoid":           _paranoid_agent,
     # Eirini's agents
     "e_heuristic":        _eirini_heuristic,
     "e_heuristic_comp":   _eirini_heuristic_comp,
@@ -172,7 +180,7 @@ def _make_initial_state(seed: int, game_idx: int) -> GameState:
 
 
 def run_game(agent_map: dict[str, str], seed: int, game_idx: int,
-             max_turns: int = 300) -> dict[str, int]:
+             max_turns: int = 300, think_time: float = THINK_TIME) -> dict[str, int]:
     """
     Simulate one game. agent_map: {snake_id: agent_name}.
     Returns {snake_id: survival_turn}.
@@ -190,8 +198,8 @@ def run_game(agent_map: dict[str, str], seed: int, game_idx: int,
             agent_name = agent_map.get(snake.id, "random")
             agent_fn = AGENTS[agent_name]
             try:
-                if agent_name in ("mcts", "mcts_rave"):
-                    moves[snake.id] = agent_fn(state, snake.id, THINK_TIME)
+                if agent_name in ("mcts", "mcts_rave", "paranoid"):
+                    moves[snake.id] = agent_fn(state, snake.id, think_time)
                 else:
                     moves[snake.id] = agent_fn(state, snake.id)
             except Exception:
@@ -212,7 +220,7 @@ def run_game(agent_map: dict[str, str], seed: int, game_idx: int,
 
 # ── Tournament ────────────────────────────────────────────────────────────────
 
-def tournament(agent_names: list[str], n_games: int, seed: int):
+def tournament(agent_names: list[str], n_games: int, seed: int, think_time: float = THINK_TIME):
     """
     Round-robin tournament: cycle agents across the 4 snake slots.
     Each game assigns one of each agent (if 4 agents) or repeats.
@@ -232,7 +240,7 @@ def tournament(agent_names: list[str], n_games: int, seed: int):
         slot_to_agent = {f"snake_{i}": assigned[i] for i in range(4)}
 
         t0 = time.time()
-        death_turns = run_game(agent_map, seed, game_idx)
+        death_turns = run_game(agent_map, seed, game_idx, think_time=think_time)
         elapsed = time.time() - t0
 
         # Determine rank (higher survival_turn = better rank)
@@ -290,7 +298,10 @@ if __name__ == "__main__":
     parser.add_argument("--seed", type=int, default=42,
                         help="Random seed (default: 42)")
     parser.add_argument("--agents", nargs="+",
-                        default=["random", "heuristic", "mcts", "mcts_rave"],
-                        help="Agents to include (default: all four)")
+                        default=["heuristic", "mcts", "mcts_rave", "paranoid"],
+                        help="Agents to include (default: heuristic, mcts, mcts_rave, paranoid)")
+    parser.add_argument("--think", type=float, default=None,
+                        help="Override think time in seconds per move (default: use THINK_TIME constant)")
     args = parser.parse_args()
-    tournament(args.agents, args.games, args.seed)
+    think = args.think if args.think is not None else THINK_TIME
+    tournament(args.agents, args.games, args.seed, think_time=think)

@@ -1,0 +1,17 @@
+\contentsline {section}{\numberline {1}Introduction}{2}{section.1}%
+\contentsline {section}{\numberline {2}Methods}{2}{section.2}%
+\contentsline {subsection}{\numberline {2.1}Game Rules}{2}{subsection.2.1}%
+\contentsline {subsection}{\numberline {2.2}Heuristic Agent}{2}{subsection.2.2}%
+\contentsline {subsection}{\numberline {2.3}MCTS Agent}{3}{subsection.2.3}%
+\contentsline {subsubsection}{\numberline {2.3.1}Hyper-parameter exploration}{4}{subsubsection.2.3.1}%
+\contentsline {section}{\numberline {3}Further improvements}{5}{section.3}%
+\contentsline {subsection}{\numberline {3.1}Progressive Bias for heuristic action reduction}{5}{subsection.3.1}%
+\contentsline {subsection}{\numberline {3.2}Rapid Value Action Estimation in the selection}{6}{subsection.3.2}%
+\contentsline {section}{\numberline {4}Results}{9}{section.4}%
+\contentsline {subsection}{\numberline {4.1}RAVE and Paranoid Search Comparison}{9}{subsection.4.1}%
+\contentsline {section}{\numberline {5}Discussion}{9}{section.5}%
+\contentsline {subsection}{\numberline {5.1}RAVE Improves Over Vanilla MCTS}{9}{subsection.5.1}%
+\contentsline {subsection}{\numberline {5.2}Paranoid Search Underperformed Expectations}{10}{subsection.5.2}%
+\contentsline {subsection}{\numberline {5.3}Consistent Two-Tier Structure}{11}{subsection.5.3}%
+\contentsline {section}{\numberline {6}Future Work}{11}{section.6}%
+\contentsline {section}{\numberline {7}Conclusions}{12}{section.7}%
